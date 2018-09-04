@@ -21,8 +21,59 @@
   </li>
 </ul>
 
+### AWS 배포 가이드
+
+**1.** 인스턴스 생성
+
+&nbsp;&nbsp;저는 Ubuntu로 진행했습니다.
+
+&nbsp;&nbsp;&nbsp;ubuntu 는 sudo apt-get .... 을 활용해서 환경에 필요한 설치를 진행합니다.
+
+&nbsp;&nbsp;&nbsp;AMI 는 sudo yum ... 으로 작성하면 환경에 필요한 것들을 설치 할 수 있습니다.
+
+**2.** 인스턴스에 Apache2, 자바 설치
+
+    sudo apt install apache2
+    
+    sudo apt-get update
+    
+    sudo apt-get install openjdk-8-jdk
+
+**2.** 인스턴스에 build 한 jar 파일 업로드
+
+    filezila 등의 ftp 프로그램을 사용하면 편리합니다.
+    apache2를 설치하셨다면 /var/www/html 디렉토리 안에 build한 jar 파일을 놓습니다.
+
+**3.** 업로드 한 jar 파일 실행
+
+    /var/www/html 경로로 이동합니다.
+    $java -jar taxi_api.jar 명령어를 사용해서 호출합니다.
+    
+    실행되면 ctrl+z 를 누릅니다.
+    $bg
+        background 프로세스 확인
+    $disown
+    $exit
+
+이제 연결 세션을 종료해도 계속 jar파일이 실행됩니다.
+
 
 ### How to use
+
+#### 2가지 방법으로 사용 할 수 있습니다.
+
+1. 제가 배포한 ip주소로 접속하셔서 사용하는 경우
+
+    아래 예시처럼 요청을 보내시면 됩니다.
+
+    ex) 13.209.195.209:8080/api/taxi/allList
+    
+    ex) http://13.209.195.209:8080/api/user/join
+    
+2. mvnrepository 에서 배포한 jar 파일을 다운 받는 경우
+
+    개발하고 계신 안드로이드 프로젝트에 jar파일을 추가하면 됩니다.
+
 
 <hr>
 

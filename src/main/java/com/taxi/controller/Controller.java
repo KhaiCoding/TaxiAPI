@@ -4,9 +4,12 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.tomcat.util.http.parser.MediaType;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.*;
 
 import com.taxi.service.IdCheckService;
 import com.taxi.service.JoinService;
@@ -14,7 +17,7 @@ import com.taxi.service.LoginService;
 import com.taxi.service.RequestListService;
 import com.taxi.service.RequestService;
 import com.taxi.service.ResponseService;
-import org.springframework.web.bind.annotation.*;
+
 
 @RestController
 public class Controller {
